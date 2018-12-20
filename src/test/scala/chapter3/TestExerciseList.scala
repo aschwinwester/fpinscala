@@ -26,4 +26,16 @@ class TestExerciseList extends FunSuite {
   test("should return tail for non-empty list") {
     assert(tail(List(1,2,3)) == List(2,3) )
   }
+
+  test("should set new head") {
+    assert(setHead(List(1,2,3), 4) == List(4,2,3) )
+  }
+
+  test("should set new head for single element") {
+    assert(setHead(List(1), 4) == List(4) )
+  }
+  test("should set new head for empty list") {
+    assert(setHead(List(), 4) == List(4) )
+  }
+
 }
