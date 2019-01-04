@@ -37,8 +37,33 @@ object List {
     case Cons(_, xs) => xs
   }
 
+  /**
+    * Exercise 3.3 setHead
+    * Replace the first item in the list.
+    * Use the pattern matching on list to recognize the head and tail.
+    * @param list a list
+    * @param head new item which should be the head.
+    * @tparam A Generic
+    * @return
+    */
   def setHead[A](list:List[A], head:A): List[A] = list match {
     case Nil => Cons(head, Nil)
     case Cons(_, tail) => Cons(head, tail)
+  }
+
+  /**
+    * Exercise 3.4 drop.
+    * Recursive call drop. Check boundaries for List and n.
+    * @param list
+    * @param n
+    * @tparam A
+    * @return
+    */
+  def drop[A](list: List[A], n: Int): List[A] = {
+    if (n <= 0) list
+    else list match {
+      case Nil => Nil
+      case Cons(_, tail) => drop(tail, n -1)
+    }
   }
 }
