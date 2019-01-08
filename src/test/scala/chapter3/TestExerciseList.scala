@@ -38,4 +38,24 @@ class TestExerciseList extends FunSuite {
     assert(setHead(List(), 4) == List(4) )
   }
 
+  test("should return first three items") {
+    assert(init(List(1,2,3,4)) == List(1,2,3))
+  }
+
+  test("should return nil as List is now empty") {
+    assert(init(List(1)) == Nil)
+  }
+  test("lenght of list should be number of arguments") {
+    assert(length(List(1,2,2,2)) == 4)
+  }
+
+
+  test("revers of list ") {
+    assert(reverse(List(1,2,3,4)) == List(4,3,2,1))
+  }
+  test("revers of list using foldLeft") {
+    assert(reverseFoldLeft(List(1,2,3,4)) == List(4,3,2,1))
+  }
+
+
 }
