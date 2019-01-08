@@ -57,5 +57,11 @@ class TestExerciseList extends FunSuite {
     assert(reverseFoldLeft(List(1,2,3,4)) == List(4,3,2,1))
   }
 
+  test("append one list to another") {
+    assert(appendViaFoldLeft(List(1,2,3,4), List(5,6,7,8)) == List(4,3,2,1,5,6,7,8))
+  }
+  test("append one list to another with foldRight") {
+    assert(appendViaFoldRight(List(1,2,3,4), List(5,6,7,8)) == List(1,2,3,4,5,6,7,8))
+  }
 
 }

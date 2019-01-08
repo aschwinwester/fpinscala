@@ -144,10 +144,22 @@ object List {
       case Cons(h, tail) => foldLeft(tail, f(z, h))(f)
   }
 
+  /**
+    * Exercise 3.11
+    * @param ns list
+    * @return sum of the list
+    */
   def sum3(ns: List[Int]):Int = foldLeft(ns, 0)(_ + _)
   def product4(ns: List[Double]):Double = foldLeft(ns, 1.0)(_ * _)
   def length3[A](as: List[A]): Int = foldLeft(as, 0)((acc, _) => acc + 1)
 
+  /**
+    * Exercise 3.12 my own implementation without foldLeft.
+    *
+    * @param list to reverse
+    * @tparam A type
+    * @return list which is reversed
+    */
   def reverse[A](list:List[A]):List[A] = {
 
     /**
@@ -165,7 +177,10 @@ object List {
   }
 
   /**
-    * this answer look in correct, but head should be placed before already processed heads.
+    * Exercise 3.12
+    *  this answer looks in correct,
+    * but head should be placed before already processed heads.
+    * So Cons(h, acc) is correct.
     *
     * The acc is the list, append h as an element last
     * @param list a list
@@ -173,4 +188,16 @@ object List {
     * @return new list
     */
   def reverseFoldLeft[A](list:List[A]):List[A] = foldLeft(list, List[A]())( (acc, h) => Cons(h, acc))
+
+  def appendViaFoldLeft[A](a1: List[A], a2: List[A]): List[A] = foldLeft(a1, a2)( (acc, h) => Cons(h, acc))
+
+  /**
+    * see https://medium.com/@juntomioka/why-foldright-is-beautiful-7854ede3e133
+    * @param l
+    * @param r
+    * @tparam A
+    * @return
+    */
+  def appendViaFoldRight[A](l: List[A], r: List[A]): List[A] = foldRight(l, r)(Cons(_,_))
+
 }
